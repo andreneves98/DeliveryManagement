@@ -1,0 +1,56 @@
+Utilizador:
+	- Nr_Reg : int PRIMARY KEY
+	- Nome : varchar(255) NOT NULL
+	- NIF : int NOT NULL
+	- email : varchar(255) NOT NULL
+	- nr_tel : int NOT NULL
+
+Cliente:
+	- PromoCode : varchar(10) UNIQUE
+	- nr_reg : int FOREIGN KEY (UTILIZADOR)
+
+Motorista:
+	- Matricula : varchar(6) NOT NULL
+	- MarcaVeiculo : varchar(15) NOT NULL
+	- nr_reg : int FOREIGN KEY (UTILIZADOR)
+	- id_avaliacao : varchar(5) UNIQUE
+
+Estabelecimento:
+	- Nome : varchar(255) PRIMARY KEY
+	- Tipo : varchar(30) NOT NULL
+	- Morada : varchar(255) NOT NULL
+	- Horario : varchar(1000) NOT NULL
+	- id_avaliacao : varchar(5) UNIQUE
+	- id_produto : varchar(5) UNIQUE, FOREIGN KEY (PRODUTO)
+
+Produto:
+	- id : varchar(5) PRIMARY KEY
+	- nome : varchar(100) NOT NULL
+	- preco : decimal(6,2) CHECK > 0
+	- descricao: varchar(255) 
+
+Encomenda:
+	- id : varchar(5) PRIMARY KEY
+	- morada : varchar(255) NOT NULL
+	- obs : varchar(255)
+	- preco_total : decimal(6,2) CHECK > 0
+	- id_produto : varchar(5) UNIQUE, FOREIGN KEY(PRODUTO)
+	- ref_pagamento : int NOT NULL, FOREIGN KEY(PAGAMENTO)
+	- nr_reg_cliente : int NOT NULL, FOREIGN KEY(CLIENTE)
+	- nr_reg_motorista : int NOT NULL, FOREIGN KEY(MOTORISTA)
+
+Pagamento:
+	- preco : decimal(6,2) CHECK > 0
+	- morada_fat : varchar(255) NOT NULL
+	- metodo : varchar(30) NOT NULL
+	- contabanc : bigint NOT NULL
+	- referencia : int PRIMARY KEY
+	- id_encomenda : varchar(5) FOREIGN KEY(ENCOMENDA)
+
+Avaliacao:
+	- id : int PRIMARY KEY
+	- obs : varchar(255)
+	- estrelas_compra : int NOT NULL
+	- estrelas_motorista : int NOT NULL
+	- tempo_espera : int
+	- id_encomenda : varchar(5) UNIQUE, FOREIGN KEY(ENCOMENDA)
