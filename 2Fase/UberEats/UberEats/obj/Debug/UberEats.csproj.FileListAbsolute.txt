@@ -1,0 +1,10 @@
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\bin\Debug\UberEats.exe.config
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\bin\Debug\UberEats.exe
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\bin\Debug\UberEats.pdb
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.csprojAssemblyReference.cache
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.Form1.resources
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.Properties.Resources.resources
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.csproj.GenerateResource.cache
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.csproj.CoreCompileInputs.cache
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.exe
+E:\Universidade\Ano3\2semestre\BD\DeliveryManagement\2Fase\UberEats\UberEats\obj\Debug\UberEats.pdb
