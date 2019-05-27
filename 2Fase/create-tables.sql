@@ -84,3 +84,6 @@ create table ServEntr.Avaliacao(
 				on delete set null on update cascade);
 
 alter table ServEntr.Encomenda add status varchar(10);
+
+select * from ServEntr.Encomenda;
+alter table ServEntr.Cliente add morada varchar(255) not null;
