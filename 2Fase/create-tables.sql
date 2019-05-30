@@ -86,4 +86,5 @@ create table ServEntr.Avaliacao(
 alter table ServEntr.Encomenda add status varchar(10);
 
 select * from ServEntr.Encomenda;
-alter table ServEntr.Cliente add morada varchar(255) not null;
+alter table ServEntr.Utilizador add morada varchar(255) not null;
+alter table ServEntr.Utilizador add cod_postal varchar(8) not null;
