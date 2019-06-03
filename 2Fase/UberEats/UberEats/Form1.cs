@@ -42,6 +42,9 @@ namespace UberEats
             this.panels.Add(this.painel_motoristas);
             this.panels.Add(this.painel_addmotorista);
             this.panels.Add(this.painel_edit_motorista);
+            this.panels.Add(this.painel_clientes);
+            this.panels.Add(this.painel_add_cliente);
+            this.panels.Add(this.painel_edit_cliente);
 
             /* Zona Geral */
             this.label1.Font = new Font("Arial", 20, FontStyle.Bold);
@@ -82,10 +85,14 @@ namespace UberEats
             this.label20.Font = new Font("Arial", 14, FontStyle.Bold);
             this.label26.Font = new Font("Arial", 14, FontStyle.Bold);
             this.label38.Font = new Font("Arial", 14, FontStyle.Bold);
+            this.label39.Font = new Font("Arial", 14, FontStyle.Bold);
+            this.label48.Font = new Font("Arial", 14, FontStyle.Bold);
+            this.label57.Font = new Font("Arial", 14, FontStyle.Bold);
+
 
             this.b_encomendas_lateral.Font = new Font("Arial", 12);
             this.b_motoristas_lateral.Font = new Font("Arial", 12);
-            this.button3.Font = new Font("Arial", 12);
+            this.b_lateral_clientes.Font = new Font("Arial", 12);
             this.exit_button.Font = new Font("Arial", 14);
 
             /* Botões das encomendas */
@@ -105,6 +112,15 @@ namespace UberEats
             this.b_ok_add_motorista.Font = new Font("Arial", 13);
             this.b_cancel_edit_motorista.Font = new Font("Arial", 13);
             this.b_ok_edit_motorista.Font = new Font("Arial", 13);
+
+            /* Botões dos clientes */
+            this.b_add_cliente.Font = new Font("Arial", 13);
+            this.b_edit_cliente.Font = new Font("Arial", 13);
+            this.b_elim_cliente.Font = new Font("Arial", 13);
+            this.b_cancel_add_cliente.Font = new Font("Arial", 13);
+            this.b_ok_add_cliente.Font = new Font("Arial", 13);
+            this.b_cancel_edit_cliente.Font = new Font("Arial", 13);
+            this.b_ok_edit_cliente.Font = new Font("Arial", 13);
         }
 
         private void exit_button_Click(object sender, EventArgs e)
@@ -165,6 +181,31 @@ namespace UberEats
         private void b_cancel_edit_motorista_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_motoristas);
+        }
+
+        private void b_lateral_clientes_Click(object sender, EventArgs e)
+        {
+            showpanel(this.painel_clientes);
+        }
+
+        private void b_add_cliente_Click(object sender, EventArgs e)
+        {
+            showpanel(this.painel_add_cliente);
+        }
+
+        private void b_edit_cliente_Click(object sender, EventArgs e)
+        {
+            showpanel(this.painel_edit_cliente);
+        }
+
+        private void b_cancel_add_cliente_Click(object sender, EventArgs e)
+        {
+            showpanel(this.painel_clientes);
+        }
+
+        private void b_cancel_edit_cliente_Click(object sender, EventArgs e)
+        {
+            showpanel(this.painel_clientes);
         }
     }
 }

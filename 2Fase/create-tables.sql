@@ -88,3 +88,12 @@ alter table ServEntr.Encomenda add status varchar(10);
 select * from ServEntr.Encomenda;
 alter table ServEntr.Utilizador add morada varchar(255) not null;
 alter table ServEntr.Utilizador add cod_postal varchar(8) not null;
+
+
+select * from ServEntr.Utilizador;
+select * from ServEntr.Cliente;
+select * from ServEntr.Motorista;
+select * from ServEntr.Estabelecimento;
+select * from ServEntr.Produto;
+select * from ServEntr.Encomenda;
+select * from ServEntr.Avaliacao;
