@@ -68,10 +68,6 @@
             this.b_elim_cliente = new System.Windows.Forms.Button();
             this.b_edit_cliente = new System.Windows.Forms.Button();
             this.b_add_cliente = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.painel_edit_motorista = new System.Windows.Forms.Panel();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
@@ -118,9 +114,6 @@
             this.b_edit_motorista = new System.Windows.Forms.Button();
             this.b_add_motorista = new System.Windows.Forms.Button();
             this.tabela_motoristas = new System.Windows.Forms.DataGridView();
-            this.Nr_Reg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MarcaVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.painel_editencomenda = new System.Windows.Forms.Panel();
             this.b_ok_editencomenda = new System.Windows.Forms.Button();
             this.b_cancel_edit_encomenda = new System.Windows.Forms.Button();
@@ -153,10 +146,6 @@
             this.b_edit_encomenda = new System.Windows.Forms.Button();
             this.b_add_encomenda = new System.Windows.Forms.Button();
             this.tabela_encomendas = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.morada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.exit_button = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -169,16 +158,27 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.Nr_Reg = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarcaVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.morada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabela_clientes = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.painel_edit_cliente.SuspendLayout();
             this.painel_add_cliente.SuspendLayout();
             this.painel_clientes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.painel_edit_motorista.SuspendLayout();
             this.painel_addmotorista.SuspendLayout();
             this.painel_motoristas.SuspendLayout();
@@ -192,6 +192,7 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabela_clientes)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -535,11 +536,11 @@
             // painel_clientes
             // 
             this.painel_clientes.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.painel_clientes.Controls.Add(this.tabela_clientes);
             this.painel_clientes.Controls.Add(this.label39);
             this.painel_clientes.Controls.Add(this.b_elim_cliente);
             this.painel_clientes.Controls.Add(this.b_edit_cliente);
             this.painel_clientes.Controls.Add(this.b_add_cliente);
-            this.painel_clientes.Controls.Add(this.dataGridView1);
             this.painel_clientes.Location = new System.Drawing.Point(184, 20);
             this.painel_clientes.Name = "painel_clientes";
             this.painel_clientes.Size = new System.Drawing.Size(567, 399);
@@ -583,41 +584,6 @@
             this.b_add_cliente.Text = "Adicionar";
             this.b_add_cliente.UseVisualStyleBackColor = true;
             this.b_add_cliente.Click += new System.EventHandler(this.b_add_cliente_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 26);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(567, 313);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nr_Reg";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 107;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "MarcaVeiculo";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Matricula";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 210;
             // 
             // painel_edit_motorista
             // 
@@ -1043,38 +1009,14 @@
             // 
             // tabela_motoristas
             // 
-            this.tabela_motoristas.AllowUserToOrderColumns = true;
+            this.tabela_motoristas.AllowUserToAddRows = false;
             this.tabela_motoristas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabela_motoristas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nr_Reg,
-            this.MarcaVeiculo,
-            this.Matricula});
             this.tabela_motoristas.Location = new System.Drawing.Point(0, 26);
             this.tabela_motoristas.Name = "tabela_motoristas";
             this.tabela_motoristas.ReadOnly = true;
+            this.tabela_motoristas.RowHeadersVisible = false;
             this.tabela_motoristas.Size = new System.Drawing.Size(567, 313);
             this.tabela_motoristas.TabIndex = 0;
-            // 
-            // Nr_Reg
-            // 
-            this.Nr_Reg.HeaderText = "Nr_Reg";
-            this.Nr_Reg.Name = "Nr_Reg";
-            this.Nr_Reg.ReadOnly = true;
-            this.Nr_Reg.Width = 107;
-            // 
-            // MarcaVeiculo
-            // 
-            this.MarcaVeiculo.HeaderText = "MarcaVeiculo";
-            this.MarcaVeiculo.Name = "MarcaVeiculo";
-            this.MarcaVeiculo.ReadOnly = true;
-            this.MarcaVeiculo.Width = 250;
-            // 
-            // Matricula
-            // 
-            this.Matricula.HeaderText = "Matricula";
-            this.Matricula.Name = "Matricula";
-            this.Matricula.ReadOnly = true;
-            this.Matricula.Width = 210;
             // 
             // painel_editencomenda
             // 
@@ -1379,46 +1321,14 @@
             // 
             // tabela_encomendas
             // 
-            this.tabela_encomendas.AllowUserToOrderColumns = true;
+            this.tabela_encomendas.AllowUserToAddRows = false;
             this.tabela_encomendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabela_encomendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.status,
-            this.cliente,
-            this.morada});
             this.tabela_encomendas.Location = new System.Drawing.Point(0, 26);
             this.tabela_encomendas.Name = "tabela_encomendas";
             this.tabela_encomendas.ReadOnly = true;
+            this.tabela_encomendas.RowHeadersVisible = false;
             this.tabela_encomendas.Size = new System.Drawing.Size(567, 313);
             this.tabela_encomendas.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 40;
-            // 
-            // status
-            // 
-            this.status.HeaderText = "Status";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            this.status.Width = 85;
-            // 
-            // cliente
-            // 
-            this.cliente.HeaderText = "Cliente";
-            this.cliente.Name = "cliente";
-            this.cliente.ReadOnly = true;
-            this.cliente.Width = 200;
-            // 
-            // morada
-            // 
-            this.morada.HeaderText = "Morada";
-            this.morada.Name = "morada";
-            this.morada.ReadOnly = true;
-            this.morada.Width = 200;
             // 
             // exit_button
             // 
@@ -1544,6 +1454,46 @@
             this.label4.Text = "Ativas: x";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Nr_Reg
+            // 
+            this.Nr_Reg.Name = "Nr_Reg";
+            // 
+            // MarcaVeiculo
+            // 
+            this.MarcaVeiculo.Name = "MarcaVeiculo";
+            // 
+            // Matricula
+            // 
+            this.Matricula.Name = "Matricula";
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 40;
+            // 
+            // status
+            // 
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Width = 85;
+            // 
+            // cliente
+            // 
+            this.cliente.HeaderText = "Cliente";
+            this.cliente.Name = "cliente";
+            this.cliente.ReadOnly = true;
+            this.cliente.Width = 200;
+            // 
+            // morada
+            // 
+            this.morada.HeaderText = "Morada";
+            this.morada.Name = "morada";
+            this.morada.ReadOnly = true;
+            this.morada.Width = 200;
+            // 
             // textBox19
             // 
             this.textBox19.Location = new System.Drawing.Point(420, 207);
@@ -1587,6 +1537,37 @@
             this.panel6.Size = new System.Drawing.Size(776, 53);
             this.panel6.TabIndex = 3;
             // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // tabela_clientes
+            //
+            this.tabela_clientes.AllowUserToAddRows = false;
+            this.tabela_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabela_clientes.Location = new System.Drawing.Point(0, 26);
+            this.tabela_clientes.Name = "tabela_clientes";
+            this.tabela_clientes.ReadOnly = true;
+            this.tabela_clientes.RowHeadersVisible = false;
+            this.tabela_clientes.Size = new System.Drawing.Size(567, 313);
+            this.tabela_clientes.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1604,7 +1585,6 @@
             this.painel_add_cliente.PerformLayout();
             this.painel_clientes.ResumeLayout(false);
             this.painel_clientes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.painel_edit_motorista.ResumeLayout(false);
             this.painel_edit_motorista.PerformLayout();
             this.painel_addmotorista.ResumeLayout(false);
@@ -1629,6 +1609,7 @@
             this.panel3.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabela_clientes)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1741,10 +1722,6 @@
         private System.Windows.Forms.Button b_elim_cliente;
         private System.Windows.Forms.Button b_edit_cliente;
         private System.Windows.Forms.Button b_add_cliente;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Panel painel_add_cliente;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label40;
@@ -1781,6 +1758,11 @@
         private System.Windows.Forms.Button b_ok_edit_cliente;
         private System.Windows.Forms.Button b_cancel_edit_cliente;
         private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridView tabela_clientes;
     }
 }
 

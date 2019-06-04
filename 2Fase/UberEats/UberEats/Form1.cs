@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Data.SqlClient;
 
 namespace UberEats
 {
     public partial class Form1 : Form
     {
+        private SqlConnection cn;
         ArrayList panels = new ArrayList();
         public void showpanel(Panel p)
         {
@@ -28,6 +30,7 @@ namespace UberEats
 
         public Form1()
         {
+
             InitializeComponent();
             CenterToScreen();
             MaximizeBox = false;
@@ -36,6 +39,12 @@ namespace UberEats
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            cn = getSGBDConnection();
+            SqlDataAdapter data = new SqlDataAdapter("select id, ServEntr.Cliente.nome, ServEntr.Encomenda.morada, preco_total, status from ServEntr.Encomenda join ServEntr.Cliente on nr_reg = nr_reg_cliente;", cn);
+            DataTable table_encomendas = new DataTable();
+            data.Fill(table_encomendas);
+            this.tabela_encomendas.DataSource = table_encomendas;
+
             this.panels.Add(this.painel_encomendas);
             this.panels.Add(this.painel_addencomenda);
             this.panels.Add(this.painel_editencomenda);
@@ -125,6 +134,7 @@ namespace UberEats
 
         private void exit_button_Click(object sender, EventArgs e)
         {
+            cn.Close();
             Application.Exit();
         }
 
@@ -161,6 +171,10 @@ namespace UberEats
         private void b_motoristas_lateral_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_motoristas);
+            SqlDataAdapter data = new SqlDataAdapter("select nome, nr_tel, marcaveiculo, matricula from ServEntr.Motorista;", cn);
+            DataTable table_motoristas = new DataTable();
+            data.Fill(table_motoristas);
+            this.tabela_motoristas.DataSource = table_motoristas;
         }
 
         private void b_add_motorista_Click(object sender, EventArgs e)
@@ -186,6 +200,10 @@ namespace UberEats
         private void b_lateral_clientes_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_clientes);
+            SqlDataAdapter data = new SqlDataAdapter("select nome, nif, nr_tel, email, morada from ServEntr.Cliente;", cn);
+            DataTable table_clientes = new DataTable();
+            data.Fill(table_clientes);
+            this.tabela_clientes.DataSource = table_clientes;
         }
 
         private void b_add_cliente_Click(object sender, EventArgs e)
@@ -206,6 +224,22 @@ namespace UberEats
         private void b_cancel_edit_cliente_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_clientes);
+        }
+
+        private SqlConnection getSGBDConnection()
+        {
+            return new SqlConnection("data source=tcp:mednat.ieeta.pt\\SQLSERVER,8101; initial catalog=p3g1; uid=p3g1; password=@0det3nosso");
+        }
+
+        private bool verifySGBDConnection()
+        {
+            if (cn == null)
+                cn = getSGBDConnection();
+
+            if (cn.State != ConnectionState.Open)
+                cn.Open();
+
+            return cn.State == ConnectionState.Open;
         }
     }
 }
