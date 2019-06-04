@@ -16,17 +16,7 @@ namespace UberEats
     {
         private SqlConnection cn;
         ArrayList panels = new ArrayList();
-        public void showpanel(Panel p)
-        {
-            foreach(Panel panel in panels)
-            {
-                if (panel != p)
-                {
-                    panel.Visible = false;
-                }
-            }
-            p.Visible = true;
-        }
+        
 
         public Form1()
         {
@@ -40,10 +30,7 @@ namespace UberEats
         private void Form1_Load(object sender, EventArgs e)
         {
             cn = getSGBDConnection();
-            SqlDataAdapter data = new SqlDataAdapter("select id, ServEntr.Cliente.nome, ServEntr.Encomenda.morada, preco_total, status from ServEntr.Encomenda join ServEntr.Cliente on nr_reg = nr_reg_cliente;", cn);
-            DataTable table_encomendas = new DataTable();
-            data.Fill(table_encomendas);
-            this.tabela_encomendas.DataSource = table_encomendas;
+            loadTabelaEncomendas();
 
             this.panels.Add(this.painel_encomendas);
             this.panels.Add(this.painel_addencomenda);
@@ -53,83 +40,59 @@ namespace UberEats
             this.panels.Add(this.painel_edit_motorista);
             this.panels.Add(this.painel_clientes);
             this.panels.Add(this.painel_add_cliente);
-            this.panels.Add(this.painel_edit_cliente);
+            this.panels.Add(this.painel_edit_cliente);            
+        }
 
-            /* Zona Geral */
-            this.label1.Font = new Font("Arial", 20, FontStyle.Bold);
+        // Auxiliar function to manage panels's visibility
+        public void showpanel(Panel p)
+        {
+            foreach(Panel panel in panels)
+            {
+                if (panel != p)
+                {
+                    panel.Visible = false;
+                }
+            }
+            p.Visible = true;
+        }
 
-            this.label2.Font = new Font("Arial", 20, FontStyle.Bold);
-            this.label2.ForeColor = Color.FromArgb(0, 204, 0);
+        // Function to load table Encomenda
+        private void loadTabelaEncomendas()
+        {
+            if (!verifySGBDConnection())
+                return;
 
-            this.label3.Font = new Font("Arial", 12);
-            int x = (panel2.Size.Width - label3.Size.Width) / 2;
-            label3.Location = new Point(x, label3.Location.Y);
+            SqlCommand cmd = new SqlCommand("select * from ServEntr.ListEncomendas();", cn);
+            SqlDataAdapter data = new SqlDataAdapter(cmd);
+            DataTable table_encomendas = new DataTable();
+            data.Fill(table_encomendas);
+            this.tabela_encomendas.DataSource = table_encomendas;
+        }
 
-            this.label4.Font = new Font("Arial", 12);
-            int x1 = (panel3.Size.Width - label4.Size.Width) / 2;
-            label4.Location = new Point(x1, label4.Location.Y);
+        // Function to load table Motorista
+        private void loadTabelaMotoristas()
+        {
+            if (!verifySGBDConnection())
+                return;
 
-            this.label5.Font = new Font("Arial", 12);
-            int x2 = (panel4.Size.Width - label5.Size.Width) / 2;
-            label5.Location = new Point(x2, label5.Location.Y);
+            SqlCommand cmd = new SqlCommand("select * from ServEntr.ListMotoristas();", cn);
+            SqlDataAdapter data = new SqlDataAdapter(cmd);
+            DataTable table_motoristas = new DataTable();
+            data.Fill(table_motoristas);
+            this.tabela_motoristas.DataSource = table_motoristas;
+        }
 
-            this.label6.Font = new Font("Arial", 12);
-            int x3 = (panel5.Size.Width - label6.Size.Width) / 2;
-            label6.Location = new Point(x3, label6.Location.Y);
+        // Function to load table Cliente
+        private void loadTabelaClientes()
+        {
+            if (!verifySGBDConnection())
+                return;
 
-            this.label7.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label8.Font = new Font("Arial", 10);
-            this.label9.Font = new Font("Arial", 10);
-            this.label10.Font = new Font("Arial", 10);
-            this.label11.Font = new Font("Arial", 10);
-            this.label12.Font = new Font("Arial", 10);
-
-            this.label13.Font = new Font("Arial", 10);
-            this.label14.Font = new Font("Arial", 10);
-            this.label15.Font = new Font("Arial", 10);
-            this.label16.Font = new Font("Arial", 10);
-            this.label17.Font = new Font("Arial", 10);
-            this.label18.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label19.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label20.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label26.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label38.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label39.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label48.Font = new Font("Arial", 14, FontStyle.Bold);
-            this.label57.Font = new Font("Arial", 14, FontStyle.Bold);
-
-
-            this.b_encomendas_lateral.Font = new Font("Arial", 12);
-            this.b_motoristas_lateral.Font = new Font("Arial", 12);
-            this.b_lateral_clientes.Font = new Font("Arial", 12);
-            this.exit_button.Font = new Font("Arial", 14);
-
-            /* Botões das encomendas */
-            this.b_add_encomenda.Font = new Font("Arial", 13);
-            this.b_edit_encomenda.Font = new Font("Arial", 13);
-            this.elim_encomenda.Font = new Font("Arial", 13);
-            this.b_cancel_add_encomenda.Font = new Font("Arial", 13);
-            this.b_ok_addencomenda.Font = new Font("Arial", 13);
-            this.b_cancel_edit_encomenda.Font = new Font("Arial", 13);
-            this.b_ok_editencomenda.Font = new Font("Arial", 13);
-
-            /* Botões dos motoristas */
-            this.b_add_motorista.Font = new Font("Arial", 13);
-            this.b_edit_motorista.Font = new Font("Arial", 13);
-            this.b_elim_motorista.Font = new Font("Arial", 13);
-            this.b_cancel_add_motorista.Font = new Font("Arial", 13);
-            this.b_ok_add_motorista.Font = new Font("Arial", 13);
-            this.b_cancel_edit_motorista.Font = new Font("Arial", 13);
-            this.b_ok_edit_motorista.Font = new Font("Arial", 13);
-
-            /* Botões dos clientes */
-            this.b_add_cliente.Font = new Font("Arial", 13);
-            this.b_edit_cliente.Font = new Font("Arial", 13);
-            this.b_elim_cliente.Font = new Font("Arial", 13);
-            this.b_cancel_add_cliente.Font = new Font("Arial", 13);
-            this.b_ok_add_cliente.Font = new Font("Arial", 13);
-            this.b_cancel_edit_cliente.Font = new Font("Arial", 13);
-            this.b_ok_edit_cliente.Font = new Font("Arial", 13);
+            SqlCommand cmd = new SqlCommand("select * from ServEntr.ListClientes();", cn);
+            SqlDataAdapter data = new SqlDataAdapter(cmd);
+            DataTable table_clientes = new DataTable();
+            data.Fill(table_clientes);
+            this.tabela_clientes.DataSource = table_clientes;
         }
 
         private void exit_button_Click(object sender, EventArgs e)
@@ -171,10 +134,7 @@ namespace UberEats
         private void b_motoristas_lateral_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_motoristas);
-            SqlDataAdapter data = new SqlDataAdapter("select nome, nr_tel, marcaveiculo, matricula from ServEntr.Motorista;", cn);
-            DataTable table_motoristas = new DataTable();
-            data.Fill(table_motoristas);
-            this.tabela_motoristas.DataSource = table_motoristas;
+            loadTabelaMotoristas();
         }
 
         private void b_add_motorista_Click(object sender, EventArgs e)
@@ -200,10 +160,7 @@ namespace UberEats
         private void b_lateral_clientes_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_clientes);
-            SqlDataAdapter data = new SqlDataAdapter("select nome, nif, nr_tel, email, morada from ServEntr.Cliente;", cn);
-            DataTable table_clientes = new DataTable();
-            data.Fill(table_clientes);
-            this.tabela_clientes.DataSource = table_clientes;
+            loadTabelaClientes();
         }
 
         private void b_add_cliente_Click(object sender, EventArgs e)
@@ -240,6 +197,42 @@ namespace UberEats
                 cn.Open();
 
             return cn.State == ConnectionState.Open;
+        }
+
+        public int num_encomendas()
+        {
+            if (!verifySGBDConnection())
+                return 0;
+
+            SqlCommand cmd = new SqlCommand("select ServEntr.Num_Encomendas()", cn);
+            return (int)cmd.ExecuteScalar();
+        }
+
+        public int num_encomendas_ativas()
+        {
+            if (!verifySGBDConnection())
+                return 0;
+
+            SqlCommand cmd = new SqlCommand("select ServEntr.Num_Encomendas_Ativas()", cn);
+            return (int)cmd.ExecuteScalar();
+        }
+
+        public int num_encomendas_terminadas()
+        {
+            if (!verifySGBDConnection())
+                return 0;
+
+            SqlCommand cmd = new SqlCommand("select ServEntr.Num_Encomendas_Terminadas()", cn);
+            return (int)cmd.ExecuteScalar();
+        }
+
+        public int num_encomendas_canceladas()
+        {
+            if (!verifySGBDConnection())
+                return 0;
+
+            SqlCommand cmd = new SqlCommand("select ServEntr.Num_Encomendas_Canceladas()", cn);
+            return (int)cmd.ExecuteScalar();
         }
     }
 }

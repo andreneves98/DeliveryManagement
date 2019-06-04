@@ -30,3 +30,4 @@ insert into ServEntr.Pagamento(preco, morada_fat, metodo, referencia) values (13
 
 -- ENCHER A TABELA ENCOMENDA --
 insert into ServEntr.Encomenda (id, morada, obs, preco_total, ref_pagamento, nr_reg_cliente, nr_reg_motorista, id_avaliacao, status) values ('E-1u3', 'Rua do Carmo 35, 3804-503 Aveiro', null, 6.50, 123456, 2, 6, 1, 'ativa');
+insert into ServEntr.Encomenda (id, morada, obs, preco_total, ref_pagamento, nr_reg_cliente, nr_reg_motorista, id_avaliacao, status) values ('E-k74', 'Rua Agostinho da Silva Rocha 96, 4479-003 Maia', null, 13.60, 654321, 5, 4, 2, 'terminada');

@@ -71,6 +71,13 @@ create table ServEntr.Encomenda(
 
 alter table ServEntr.Encomenda add status varchar(15);
 
+create table ServEntr.EncomendaProduto(
+	id_encomenda	varchar(5),
+	id_produto		varchar(5),
+	primary key(id_encomenda, id_produto),
+	foreign key(id_encomenda) references ServEntr.Encomenda(id),
+	foreign key(id_produto) references ServEntr.Produto(id));
+
 select * from ServEntr.Cliente;
 select * from ServEntr.Motorista;
 select * from ServEntr.Estabelecimento;
@@ -78,3 +85,17 @@ select * from ServEntr.Produto;
 select * from ServEntr.Avaliacao;
 select * from ServEntr.Pagamento;
 select * from ServEntr.Encomenda;
+
+-- queries para o load das tabelas: encomendas, motoristas e clientes
+select id, ServEntr.Cliente.nome, ServEntr.Encomenda.morada, preco_total, status from ServEntr.Encomenda join ServEntr.Cliente on nr_reg = nr_reg_cliente;
+select nome, nr_tel, matricula, marcaveiculo from ServEntr.Motorista;
+select nome, nif, nr_tel, email, morada from ServEntr.Cliente;
+
+select count(*) from ServEntr.Encomenda;
+select ServEntr.Num_Encomendas();
+select ServEntr.Num_Encomendas_Ativas();
+select ServEntr.Num_Encomendas_Terminadas();
+select ServEntr.Num_Encomendas_Canceladas();
+select * from ServEntr.ListEncomendas();
+select * from ServEntr.ListMotoristas();
+select * from ServEntr.ListClientes();
