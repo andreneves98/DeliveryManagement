@@ -63,3 +63,18 @@ as
 	return
 	select nome, nif, nr_tel, email, morada from ServEntr.Cliente;
 GO
+
+-- RETORNA TODOS OS ESTABELECIMENTOS --
+create function ServEntr.ListEstabelecimentos() returns table
+as
+	return
+	select nome from ServEntr.Estabelecimento;
+GO
+
+-- INSERE NOVO CLIENTE --
+create function ServEntr.NewCliente (@nome as varchar(255), @nif as int, @nr_tel as int, @email as varchar(255), @morada as varchar(255)) returns table
+as
+	return
+	select max(nr_reg)+1 as id from ServEntr.Cliente;
+	insert into ServEntr.Cliente(nr_reg, nome, nif, nr_tel, email, morada) values (@id, @nome, @nif, @nr_tel, @email, @morada);
+GO
