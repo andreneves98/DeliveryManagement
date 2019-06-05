@@ -1236,7 +1236,7 @@ namespace UberEats
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(107, 18);
             this.label6.TabIndex = 0;
-            this.label6.Text = "Canceladas: " + num_encomendas_canceladas();
+            //this.label6.Text = "Canceladas: " + num_encomendas_canceladas();
             // 
             // b_lateral_clientes
             // 
@@ -1270,7 +1270,7 @@ namespace UberEats
             this.b_encomendas_lateral.Name = "b_encomendas_lateral";
             this.b_encomendas_lateral.Size = new System.Drawing.Size(165, 43);
             this.b_encomendas_lateral.TabIndex = 2;
-            this.b_encomendas_lateral.Text = "Encomendas: " + num_encomendas();
+            //this.b_encomendas_lateral.Text = "Encomendas: " + num_encomendas();
             this.b_encomendas_lateral.UseVisualStyleBackColor = false;
             this.b_encomendas_lateral.Click += new System.EventHandler(this.b_encomendas_lateral_Click);
             // 
@@ -1313,7 +1313,7 @@ namespace UberEats
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(104, 18);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Terminadas: " + num_encomendas_terminadas();
+            //this.label5.Text = "Terminadas: " + num_encomendas_terminadas();
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
@@ -1334,7 +1334,7 @@ namespace UberEats
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 18);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Ativas: " + num_encomendas_ativas();
+            //this.label4.Text = "Ativas: " + num_encomendas_ativas();
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Nr_Reg

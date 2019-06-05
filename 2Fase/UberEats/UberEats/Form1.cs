@@ -40,7 +40,12 @@ namespace UberEats
             this.panels.Add(this.painel_edit_motorista);
             this.panels.Add(this.painel_clientes);
             this.panels.Add(this.painel_add_cliente);
-            this.panels.Add(this.painel_edit_cliente);            
+            this.panels.Add(this.painel_edit_cliente);
+
+            this.b_encomendas_lateral.Text = "Encomendas: " + num_encomendas();
+            this.label4.Text = "Ativas: " + num_encomendas_ativas();
+            this.label5.Text = "Terminadas: " + num_encomendas_terminadas();
+            this.label6.Text = "Canceladas: " + num_encomendas_canceladas();
         }
 
         // Auxiliar function to manage panels's visibility
@@ -183,12 +188,12 @@ namespace UberEats
             showpanel(this.painel_clientes);
         }
 
-        private SqlConnection getSGBDConnection()
+        public SqlConnection getSGBDConnection()
         {
             return new SqlConnection("data source=tcp:mednat.ieeta.pt\\SQLSERVER,8101; initial catalog=p3g1; uid=p3g1; password=@0det3nosso");
         }
 
-        private bool verifySGBDConnection()
+        public bool verifySGBDConnection()
         {
             if (cn == null)
                 cn = getSGBDConnection();
