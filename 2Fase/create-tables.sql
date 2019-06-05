@@ -99,3 +99,5 @@ select ServEntr.Num_Encomendas_Canceladas();
 select * from ServEntr.ListEncomendas();
 select * from ServEntr.ListMotoristas();
 select * from ServEntr.ListClientes();
+select * from ServEntr.ListEstabelecimentos();
+select nome from ServEntr.Estabelecimento;

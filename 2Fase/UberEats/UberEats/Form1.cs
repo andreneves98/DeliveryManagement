@@ -16,7 +16,7 @@ namespace UberEats
     {
         private SqlConnection cn;
         ArrayList panels = new ArrayList();
-        
+        ArrayList produtos_checked = new ArrayList();        
 
         public Form1()
         {
@@ -31,6 +31,8 @@ namespace UberEats
         {
             cn = getSGBDConnection();
             loadTabelaEncomendas();
+            listaEstabelecimentos();
+            listaClientes();
 
             this.panels.Add(this.painel_encomendas);
             this.panels.Add(this.painel_addencomenda);
@@ -98,6 +100,69 @@ namespace UberEats
             DataTable table_clientes = new DataTable();
             data.Fill(table_clientes);
             this.tabela_clientes.DataSource = table_clientes;
+        }
+
+        private void listaEstabelecimentos()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("select * from ServEntr.ListEstabelecimentos();", cn);
+            DataTable dtEstabelecimentos = new DataTable();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                comboBox2.Items.Add(reader["nome"].ToString());
+            }
+
+            reader.Close();
+
+        }
+
+        private void listaClientes()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            SqlCommand cmd = new SqlCommand("select nome from ServEntr.ListClientes();", cn);
+            DataTable dtClientes = new DataTable();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                comboBox1.Items.Add(reader["nome"].ToString());
+            }
+
+            reader.Close();
+
+        }
+
+        private void listaProdutos()
+        {
+            if (!verifySGBDConnection())
+                return;
+
+            string estabelecimento = comboBox2.GetItemText(comboBox2.SelectedItem);
+            SqlCommand cmd = new SqlCommand("select nome, preco from ServEntr.ListProdutos(@estabelecimento);", cn);
+            cmd.Parameters.AddWithValue("@estabelecimento", estabelecimento);
+            DataTable dtProdutos = new DataTable();
+            SqlDataReader reader = cmd.ExecuteReader();
+            
+            while (reader.Read())
+            {
+                checkedListBox1.Items.Add(reader["nome"].ToString() + " " + reader["preco"].ToString());
+            }
+            reader.Close();
+
+            //foreach(ListViewItem item in checkedListBox1.CheckedItems)
+            //{
+            //    Console.Write(item.Text);
+            //    System.Diagnostics.Debug.Write(item.Text);
+            //}
+        }
+
+        private void precoTotalEncomenda()
+        {
+            
         }
 
         private void exit_button_Click(object sender, EventArgs e)
@@ -175,6 +240,8 @@ namespace UberEats
 
         private void b_edit_cliente_Click(object sender, EventArgs e)
         {
+            //Cliente c = new Cliente();
+            //c = (Cliente)this.tabela_clientes.CurrentRow.DataBoundItem;
             showpanel(this.painel_edit_cliente);
         }
 
@@ -238,6 +305,12 @@ namespace UberEats
 
             SqlCommand cmd = new SqlCommand("select ServEntr.Num_Encomendas_Canceladas()", cn);
             return (int)cmd.ExecuteScalar();
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkedListBox1.Items.Clear();
+            listaProdutos();
         }
     }
 }
