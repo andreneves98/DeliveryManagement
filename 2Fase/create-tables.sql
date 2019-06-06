@@ -45,6 +45,7 @@ create table ServEntr.Avaliacao(
 	tempo_espera		int,
 	primary key(id));
 
+
 create table ServEntr.Pagamento(
 	preco			decimal(6,2),
 	morada_fat		varchar(255) not null unique,
@@ -102,3 +103,4 @@ select * from ServEntr.ListMarcas();
 select * from ServEntr.ListClientes();
 select * from ServEntr.ListEstabelecimentos();
 select nome from ServEntr.Estabelecimento;
+select * from ServEntr.Pagamento;

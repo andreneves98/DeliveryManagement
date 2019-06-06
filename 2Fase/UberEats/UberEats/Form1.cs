@@ -232,28 +232,35 @@ namespace UberEats
         // Function to create Encomendas
         private void addEncomenda()
         {
-            string estabelecimento = comboBox2.GetItemText(comboBox2.SelectedItem);
-            //Console.WriteLine(estabelecimento);
-            string cliente = comboBox1.GetItemText(comboBox1.SelectedItem);
+            //string estabelecimento = comboBox2.GetItemText(comboBox2.SelectedItem);
+            ////Console.WriteLine(estabelecimento);
+            //string cliente = comboBox1.GetItemText(comboBox1.SelectedItem);
 
-            // produtos
-            string produtos = "Cheeseburger-Big Mac";
-            //foreach(object item in checkedListBox1.CheckedItems)
-            //{
-            //    produtos += item.ToString() + "-";
-            //    Regex.Replace(produtos.Trim(), @"\d", "");
-            //}
-            ////string a = Regex.Replace("ad1", @"\d", "");
-            //Console.WriteLine(produtos);
-            string obs = textBox9.Text;
+            //// produtos
+            //string produtos = "Cheeseburger-Big Mac";
+            ////foreach(object item in checkedListBox1.CheckedItems)
+            ////{
+            ////    produtos += item.ToString() + "-";
+            ////    Regex.Replace(produtos.Trim(), @"\d", "");
+            ////}
+            //////string a = Regex.Replace("ad1", @"\d", "");
+            ////Console.WriteLine(produtos);
+            //string obs = textBox9.Text;
 
-            // metodo 
-            string metodo = "";
-            bool isChecked = radioButton1.Checked;
-            if (isChecked)
-                metodo = radioButton1.Text;
-            else
-                metodo = radioButton2.Text;
+            //// metodo 
+            //string metodo = "";
+            //bool isChecked = radioButton1.Checked;
+            //if (isChecked)
+            //    metodo = radioButton1.Text;
+            //else
+            //    metodo = radioButton2.Text;
+
+            string estabelecimento = "Ramona";
+            string cliente = "Maria Alberta";
+            string produtos = "Hamburguer Carne-Hamburguer Ramona";
+            string obs = "";
+            string metodo = "PayPal";
+
 
             SqlCommand cmd = new SqlCommand("ServEntr.newEncomenda", cn);
             cmd.CommandType = CommandType.StoredProcedure;

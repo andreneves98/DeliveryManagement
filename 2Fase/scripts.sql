@@ -201,7 +201,7 @@ begin
 	--select @preco_total;
 
 	declare @ref as int;
-	set @ref = floor(rand()*999999); 
+	set @ref = 5484; 
 
 	declare @id as varchar(5);
 	set @id = floor(rand()*99999);
@@ -217,11 +217,11 @@ begin
 	set @moto = floor(rand()*@nr_reg_motorista);
 
 	declare @id_aval as int;
-	select @id_aval = floor(rand()*999999)+0;
+	set @id_aval = floor(rand()*999999)+0;
 
 	insert into ServEntr.Encomenda(id, morada, obs, preco_total, ref_pagamento, nr_reg_cliente, nr_reg_motorista, id_avaliacao, status) values (@id, @morada_cl, @obs, 0, @ref, @nr_reg_cliente, @moto, @id_aval, 'ativa');
-	insert into ServEntr.Pagamento(preco, morada_fat, metodo, referencia) values(0, @morada_cl, @metodo, @ref);
-	insert into ServEntr.Avaliacao(id, obs, estrelas_compra, estrelas_motorista, tempo_espera) values (@id_aval, null, null, null, null);
+	--insert into ServEntr.Pagamento(preco, morada_fat, metodo, referencia) values(0, @morada_cl, @metodo, @ref);
+	--insert into ServEntr.Avaliacao(id, obs, estrelas_compra, estrelas_motorista, tempo_espera) values (@id_aval, null, null, null, null);
 
 end
 
