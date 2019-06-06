@@ -50,6 +50,9 @@ namespace UberEats
             this.label4.Text = "Ativas: " + num_encomendas_ativas();
             this.label5.Text = "Terminadas: " + num_encomendas_terminadas();
             this.label6.Text = "Canceladas: " + num_encomendas_canceladas();
+
+            DataGridViewRow row = tabela_encomendas.Rows[0];
+            row.Cells["status"].Value = "ativa";
         }
 
         // Auxiliar function to manage panels's visibility
@@ -76,6 +79,16 @@ namespace UberEats
             DataTable table_encomendas = new DataTable();
             data.Fill(table_encomendas);
             this.tabela_encomendas.DataSource = table_encomendas;
+            DataGridViewRow row = tabela_encomendas.Rows[0];
+            row.Cells["preco_total"].Value = 12;
+
+            //string status = "ativa";
+            //bool isChecked = radioButton3.Checked;
+            //if (isChecked)
+            //    status = radioButton3.Text;
+            //else
+            //    status = radioButton4.Text;
+            //row.Cells["status"].Value = status;
         }
 
         // Function to load table Motorista
@@ -222,8 +235,11 @@ namespace UberEats
             while (reader.Read())
             {
                 textBox25.Text = reader["nome"].ToString();
+                checkedListBox2.Items.Add("Hamburguer Carne");
+                checkedListBox2.Items.Add("Hamburguer Ramona");
+                textBox2.Text = "";
+                textBox26.Text = "PayPal";
 
-                
             }
 
             reader.Close();
@@ -260,7 +276,7 @@ namespace UberEats
             string produtos = "Hamburguer Carne-Hamburguer Ramona";
             string obs = "";
             string metodo = "PayPal";
-
+            
 
             SqlCommand cmd = new SqlCommand("ServEntr.newEncomenda", cn);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -271,6 +287,20 @@ namespace UberEats
             cmd.Parameters.AddWithValue("@metodo", metodo);
             cmd.ExecuteNonQuery();
             
+        }
+
+        // Function to remove Encomendas
+        private void deleteEncomenda()
+        {
+
+            int selectedrowindex = tabela_encomendas.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = tabela_encomendas.Rows[selectedrowindex];
+            string id = Convert.ToString(selectedRow.Cells["id"].Value);
+
+            SqlCommand cmd = new SqlCommand("ServEntr.deleteEncomenda", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
         }
 
         // Function to create Motoristas
@@ -599,6 +629,27 @@ namespace UberEats
             deleteCliente();
             showpanel(this.painel_clientes);
             loadTabelaClientes();
+        }
+
+        private void b_ok_editencomenda_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = tabela_encomendas.Rows[0];
+
+            string status = "";
+            bool isChecked = radioButton3.Checked;
+            if (isChecked)
+                status = "terminada";
+            else
+                status = "cancelada";
+            row.Cells["status"].Value = status;
+            showpanel(this.painel_encomendas);
+            //loadTabelaEncomendas();
+        }
+
+        private void elim_encomenda_Click(object sender, EventArgs e)
+        {
+            deleteEncomenda();
+            loadTabelaEncomendas();
         }
     }
 }

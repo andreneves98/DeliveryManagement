@@ -32,6 +32,21 @@ namespace UberEats
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.painel_editencomenda = new System.Windows.Forms.Panel();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox26 = new System.Windows.Forms.TextBox();
+            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.b_ok_editencomenda = new System.Windows.Forms.Button();
+            this.b_cancel_edit_encomenda = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
             this.painel_clientes = new System.Windows.Forms.Panel();
             this.tabela_clientes = new System.Windows.Forms.DataGridView();
             this.label39 = new System.Windows.Forms.Label();
@@ -108,21 +123,6 @@ namespace UberEats
             this.b_ok_add_motorista = new System.Windows.Forms.Button();
             this.b_cancel_add_motorista = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
-            this.painel_editencomenda = new System.Windows.Forms.Panel();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.b_ok_editencomenda = new System.Windows.Forms.Button();
-            this.b_cancel_edit_encomenda = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
             this.painel_addencomenda = new System.Windows.Forms.Panel();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -172,6 +172,7 @@ namespace UberEats
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            this.painel_editencomenda.SuspendLayout();
             this.painel_clientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabela_clientes)).BeginInit();
             this.painel_edit_cliente.SuspendLayout();
@@ -180,7 +181,6 @@ namespace UberEats
             ((System.ComponentModel.ISupportInitialize)(this.tabela_motoristas)).BeginInit();
             this.painel_edit_motorista.SuspendLayout();
             this.painel_addmotorista.SuspendLayout();
-            this.painel_editencomenda.SuspendLayout();
             this.painel_addencomenda.SuspendLayout();
             this.painel_encomendas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabela_encomendas)).BeginInit();
@@ -214,13 +214,13 @@ namespace UberEats
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.painel_editencomenda);
             this.panel1.Controls.Add(this.painel_clientes);
             this.panel1.Controls.Add(this.painel_edit_cliente);
             this.panel1.Controls.Add(this.painel_add_cliente);
             this.panel1.Controls.Add(this.painel_motoristas);
             this.panel1.Controls.Add(this.painel_edit_motorista);
             this.panel1.Controls.Add(this.painel_addmotorista);
-            this.panel1.Controls.Add(this.painel_editencomenda);
             this.panel1.Controls.Add(this.painel_addencomenda);
             this.panel1.Controls.Add(this.painel_encomendas);
             this.panel1.Controls.Add(this.exit_button);
@@ -235,6 +235,165 @@ namespace UberEats
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(776, 428);
             this.panel1.TabIndex = 2;
+            // 
+            // painel_editencomenda
+            // 
+            this.painel_editencomenda.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.painel_editencomenda.Controls.Add(this.radioButton4);
+            this.painel_editencomenda.Controls.Add(this.radioButton3);
+            this.painel_editencomenda.Controls.Add(this.label15);
+            this.painel_editencomenda.Controls.Add(this.textBox26);
+            this.painel_editencomenda.Controls.Add(this.textBox25);
+            this.painel_editencomenda.Controls.Add(this.label13);
+            this.painel_editencomenda.Controls.Add(this.textBox2);
+            this.painel_editencomenda.Controls.Add(this.label14);
+            this.painel_editencomenda.Controls.Add(this.checkedListBox2);
+            this.painel_editencomenda.Controls.Add(this.label17);
+            this.painel_editencomenda.Controls.Add(this.label50);
+            this.painel_editencomenda.Controls.Add(this.b_ok_editencomenda);
+            this.painel_editencomenda.Controls.Add(this.b_cancel_edit_encomenda);
+            this.painel_editencomenda.Controls.Add(this.label18);
+            this.painel_editencomenda.Location = new System.Drawing.Point(184, 20);
+            this.painel_editencomenda.Name = "painel_editencomenda";
+            this.painel_editencomenda.Size = new System.Drawing.Size(567, 399);
+            this.painel_editencomenda.TabIndex = 13;
+            this.painel_editencomenda.Visible = false;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(226, 284);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(67, 17);
+            this.radioButton4.TabIndex = 44;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Cancelar";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(146, 284);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(66, 17);
+            this.radioButton3.TabIndex = 43;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Terminar";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Arial", 10F);
+            this.label15.Location = new System.Drawing.Point(60, 285);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(52, 16);
+            this.label15.TabIndex = 42;
+            this.label15.Text = "Status:";
+            // 
+            // textBox26
+            // 
+            this.textBox26.Location = new System.Drawing.Point(148, 245);
+            this.textBox26.Name = "textBox26";
+            this.textBox26.ReadOnly = true;
+            this.textBox26.Size = new System.Drawing.Size(93, 20);
+            this.textBox26.TabIndex = 41;
+            // 
+            // textBox25
+            // 
+            this.textBox25.Location = new System.Drawing.Point(147, 54);
+            this.textBox25.Name = "textBox25";
+            this.textBox25.ReadOnly = true;
+            this.textBox25.Size = new System.Drawing.Size(282, 20);
+            this.textBox25.TabIndex = 40;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 10F);
+            this.label13.Location = new System.Drawing.Point(55, 250);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 16);
+            this.label13.TabIndex = 36;
+            this.label13.Text = "Método:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(147, 206);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(282, 20);
+            this.textBox2.TabIndex = 35;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Arial", 10F);
+            this.label14.Location = new System.Drawing.Point(55, 207);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 16);
+            this.label14.TabIndex = 34;
+            this.label14.Text = "Obs:";
+            // 
+            // checkedListBox2
+            // 
+            this.checkedListBox2.FormattingEnabled = true;
+            this.checkedListBox2.Location = new System.Drawing.Point(147, 92);
+            this.checkedListBox2.Name = "checkedListBox2";
+            this.checkedListBox2.Size = new System.Drawing.Size(201, 94);
+            this.checkedListBox2.TabIndex = 30;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Arial", 10F);
+            this.label17.Location = new System.Drawing.Point(24, 96);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(69, 16);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Produtos:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Arial", 10F);
+            this.label50.Location = new System.Drawing.Point(24, 60);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(56, 16);
+            this.label50.TabIndex = 25;
+            this.label50.Text = "Cliente:";
+            // 
+            // b_ok_editencomenda
+            // 
+            this.b_ok_editencomenda.Font = new System.Drawing.Font("Arial", 13F);
+            this.b_ok_editencomenda.Location = new System.Drawing.Point(325, 335);
+            this.b_ok_editencomenda.Name = "b_ok_editencomenda";
+            this.b_ok_editencomenda.Size = new System.Drawing.Size(140, 51);
+            this.b_ok_editencomenda.TabIndex = 24;
+            this.b_ok_editencomenda.Text = "OK";
+            this.b_ok_editencomenda.UseVisualStyleBackColor = true;
+            this.b_ok_editencomenda.Click += new System.EventHandler(this.b_ok_editencomenda_Click);
+            // 
+            // b_cancel_edit_encomenda
+            // 
+            this.b_cancel_edit_encomenda.Font = new System.Drawing.Font("Arial", 13F);
+            this.b_cancel_edit_encomenda.Location = new System.Drawing.Point(101, 335);
+            this.b_cancel_edit_encomenda.Name = "b_cancel_edit_encomenda";
+            this.b_cancel_edit_encomenda.Size = new System.Drawing.Size(140, 51);
+            this.b_cancel_edit_encomenda.TabIndex = 23;
+            this.b_cancel_edit_encomenda.Text = "Cancelar";
+            this.b_cancel_edit_encomenda.UseVisualStyleBackColor = true;
+            this.b_cancel_edit_encomenda.Click += new System.EventHandler(this.b_cancel_edit_encomenda_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
+            this.label18.Location = new System.Drawing.Point(23, 14);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(181, 22);
+            this.label18.TabIndex = 13;
+            this.label18.Text = "Editar Encomenda";
             // 
             // painel_clientes
             // 
@@ -1010,161 +1169,6 @@ namespace UberEats
             this.label26.TabIndex = 0;
             this.label26.Text = "Novo Motorista";
             // 
-            // painel_editencomenda
-            // 
-            this.painel_editencomenda.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.painel_editencomenda.Controls.Add(this.radioButton4);
-            this.painel_editencomenda.Controls.Add(this.radioButton3);
-            this.painel_editencomenda.Controls.Add(this.label15);
-            this.painel_editencomenda.Controls.Add(this.textBox26);
-            this.painel_editencomenda.Controls.Add(this.textBox25);
-            this.painel_editencomenda.Controls.Add(this.label13);
-            this.painel_editencomenda.Controls.Add(this.textBox2);
-            this.painel_editencomenda.Controls.Add(this.label14);
-            this.painel_editencomenda.Controls.Add(this.checkedListBox2);
-            this.painel_editencomenda.Controls.Add(this.label17);
-            this.painel_editencomenda.Controls.Add(this.label50);
-            this.painel_editencomenda.Controls.Add(this.b_ok_editencomenda);
-            this.painel_editencomenda.Controls.Add(this.b_cancel_edit_encomenda);
-            this.painel_editencomenda.Controls.Add(this.label18);
-            this.painel_editencomenda.Location = new System.Drawing.Point(184, 20);
-            this.painel_editencomenda.Name = "painel_editencomenda";
-            this.painel_editencomenda.Size = new System.Drawing.Size(567, 399);
-            this.painel_editencomenda.TabIndex = 13;
-            this.painel_editencomenda.Visible = false;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(226, 284);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(67, 17);
-            this.radioButton4.TabIndex = 44;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Cancelar";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(146, 284);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(66, 17);
-            this.radioButton3.TabIndex = 43;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Terminar";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 10F);
-            this.label15.Location = new System.Drawing.Point(60, 285);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 16);
-            this.label15.TabIndex = 42;
-            this.label15.Text = "Status:";
-            // 
-            // textBox26
-            // 
-            this.textBox26.Location = new System.Drawing.Point(148, 245);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(93, 20);
-            this.textBox26.TabIndex = 41;
-            // 
-            // textBox25
-            // 
-            this.textBox25.Location = new System.Drawing.Point(147, 54);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(282, 20);
-            this.textBox25.TabIndex = 40;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 10F);
-            this.label13.Location = new System.Drawing.Point(55, 250);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 16);
-            this.label13.TabIndex = 36;
-            this.label13.Text = "Método:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(147, 206);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(282, 20);
-            this.textBox2.TabIndex = 35;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 10F);
-            this.label14.Location = new System.Drawing.Point(55, 207);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(38, 16);
-            this.label14.TabIndex = 34;
-            this.label14.Text = "Obs:";
-            // 
-            // checkedListBox2
-            // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(147, 92);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(201, 94);
-            this.checkedListBox2.TabIndex = 30;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Arial", 10F);
-            this.label17.Location = new System.Drawing.Point(24, 96);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(69, 16);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "Produtos:";
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Arial", 10F);
-            this.label50.Location = new System.Drawing.Point(24, 60);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(56, 16);
-            this.label50.TabIndex = 25;
-            this.label50.Text = "Cliente:";
-            // 
-            // b_ok_editencomenda
-            // 
-            this.b_ok_editencomenda.Font = new System.Drawing.Font("Arial", 13F);
-            this.b_ok_editencomenda.Location = new System.Drawing.Point(325, 335);
-            this.b_ok_editencomenda.Name = "b_ok_editencomenda";
-            this.b_ok_editencomenda.Size = new System.Drawing.Size(140, 51);
-            this.b_ok_editencomenda.TabIndex = 24;
-            this.b_ok_editencomenda.Text = "OK";
-            this.b_ok_editencomenda.UseVisualStyleBackColor = true;
-            // 
-            // b_cancel_edit_encomenda
-            // 
-            this.b_cancel_edit_encomenda.Font = new System.Drawing.Font("Arial", 13F);
-            this.b_cancel_edit_encomenda.Location = new System.Drawing.Point(101, 335);
-            this.b_cancel_edit_encomenda.Name = "b_cancel_edit_encomenda";
-            this.b_cancel_edit_encomenda.Size = new System.Drawing.Size(140, 51);
-            this.b_cancel_edit_encomenda.TabIndex = 23;
-            this.b_cancel_edit_encomenda.Text = "Cancelar";
-            this.b_cancel_edit_encomenda.UseVisualStyleBackColor = true;
-            this.b_cancel_edit_encomenda.Click += new System.EventHandler(this.b_cancel_edit_encomenda_Click);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold);
-            this.label18.Location = new System.Drawing.Point(23, 14);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(181, 22);
-            this.label18.TabIndex = 13;
-            this.label18.Text = "Editar Encomenda";
-            // 
             // painel_addencomenda
             // 
             this.painel_addencomenda.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -1276,9 +1280,9 @@ namespace UberEats
             // 
             this.textBox1.Location = new System.Drawing.Point(466, 285);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(65, 20);
             this.textBox1.TabIndex = 9;
-            this.textBox1.ReadOnly = true;
             // 
             // label11
             // 
@@ -1360,11 +1364,11 @@ namespace UberEats
             // painel_encomendas
             // 
             this.painel_encomendas.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.painel_encomendas.Controls.Add(this.tabela_encomendas);
             this.painel_encomendas.Controls.Add(this.label19);
             this.painel_encomendas.Controls.Add(this.elim_encomenda);
             this.painel_encomendas.Controls.Add(this.b_edit_encomenda);
             this.painel_encomendas.Controls.Add(this.b_add_encomenda);
-            this.painel_encomendas.Controls.Add(this.tabela_encomendas);
             this.painel_encomendas.Location = new System.Drawing.Point(184, 20);
             this.painel_encomendas.Name = "painel_encomendas";
             this.painel_encomendas.Size = new System.Drawing.Size(567, 399);
@@ -1389,6 +1393,7 @@ namespace UberEats
             this.elim_encomenda.TabIndex = 3;
             this.elim_encomenda.Text = "Eliminar";
             this.elim_encomenda.UseVisualStyleBackColor = true;
+            this.elim_encomenda.Click += new System.EventHandler(this.elim_encomenda_Click);
             // 
             // b_edit_encomenda
             // 
@@ -1569,7 +1574,6 @@ namespace UberEats
             this.textBox19.Name = "textBox19";
             this.textBox19.Size = new System.Drawing.Size(100, 20);
             this.textBox19.TabIndex = 24;
-
             // 
             // label43
             // 
@@ -1634,6 +1638,8 @@ namespace UberEats
             this.Text = "Delivery Management";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
+            this.painel_editencomenda.ResumeLayout(false);
+            this.painel_editencomenda.PerformLayout();
             this.painel_clientes.ResumeLayout(false);
             this.painel_clientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabela_clientes)).EndInit();
@@ -1648,8 +1654,6 @@ namespace UberEats
             this.painel_edit_motorista.PerformLayout();
             this.painel_addmotorista.ResumeLayout(false);
             this.painel_addmotorista.PerformLayout();
-            this.painel_editencomenda.ResumeLayout(false);
-            this.painel_editencomenda.PerformLayout();
             this.painel_addencomenda.ResumeLayout(false);
             this.painel_addencomenda.PerformLayout();
             this.painel_encomendas.ResumeLayout(false);

@@ -148,6 +148,13 @@ as
 	end
 GO
 
+-- ELIMINA ENCOMENDA --
+create proc ServEntr.deleteEncomenda (@id varchar(5))
+as
+	begin
+	delete from ServEntr.Encomenda where id=@id;
+	end
+GO
 
 -- ELIMINA CLIENTE --
 create proc ServEntr.deleteCliente (@nome varchar(255))

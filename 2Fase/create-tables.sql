@@ -46,6 +46,7 @@ create table ServEntr.Avaliacao(
 	primary key(id));
 
 
+drop table ServEntr.Pagamento;
 create table ServEntr.Pagamento(
 	preco			decimal(6,2),
 	morada_fat		varchar(255) not null unique,
@@ -63,7 +64,6 @@ create table ServEntr.Encomenda(
 	nr_reg_motorista int not null unique,
 	id_avaliacao	int,
 	primary key(id),
-	foreign key(ref_pagamento) references ServEntr.Pagamento(referencia),
 	foreign key(nr_reg_cliente) references ServEntr.Cliente(nr_reg)
 				on delete cascade,	-- ao apagar o cliente, apaga as encomendas dele
 	foreign key(nr_reg_motorista) references ServEntr.Motorista(nr_reg)
