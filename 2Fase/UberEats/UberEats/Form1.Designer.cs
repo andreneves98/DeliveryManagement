@@ -142,11 +142,11 @@ namespace UberEats
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.painel_encomendas = new System.Windows.Forms.Panel();
+            this.tabela_encomendas = new System.Windows.Forms.DataGridView();
             this.label19 = new System.Windows.Forms.Label();
             this.elim_encomenda = new System.Windows.Forms.Button();
             this.b_edit_encomenda = new System.Windows.Forms.Button();
             this.b_add_encomenda = new System.Windows.Forms.Button();
-            this.tabela_encomendas = new System.Windows.Forms.DataGridView();
             this.exit_button = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -171,6 +171,7 @@ namespace UberEats
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.painel_editencomenda.SuspendLayout();
             this.painel_clientes.SuspendLayout();
@@ -239,6 +240,7 @@ namespace UberEats
             // painel_editencomenda
             // 
             this.painel_editencomenda.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.painel_editencomenda.Controls.Add(this.radioButton5);
             this.painel_editencomenda.Controls.Add(this.radioButton4);
             this.painel_editencomenda.Controls.Add(this.radioButton3);
             this.painel_editencomenda.Controls.Add(this.label15);
@@ -262,7 +264,7 @@ namespace UberEats
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(226, 284);
+            this.radioButton4.Location = new System.Drawing.Point(325, 284);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(67, 17);
             this.radioButton4.TabIndex = 44;
@@ -273,7 +275,7 @@ namespace UberEats
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(146, 284);
+            this.radioButton3.Location = new System.Drawing.Point(235, 284);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(66, 17);
             this.radioButton3.TabIndex = 43;
@@ -1374,6 +1376,17 @@ namespace UberEats
             this.painel_encomendas.Size = new System.Drawing.Size(567, 399);
             this.painel_encomendas.TabIndex = 5;
             // 
+            // tabela_encomendas
+            // 
+            this.tabela_encomendas.AllowUserToAddRows = false;
+            this.tabela_encomendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabela_encomendas.Location = new System.Drawing.Point(0, 26);
+            this.tabela_encomendas.Name = "tabela_encomendas";
+            this.tabela_encomendas.ReadOnly = true;
+            this.tabela_encomendas.RowHeadersVisible = false;
+            this.tabela_encomendas.Size = new System.Drawing.Size(567, 313);
+            this.tabela_encomendas.TabIndex = 0;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -1416,17 +1429,6 @@ namespace UberEats
             this.b_add_encomenda.Text = "Adicionar";
             this.b_add_encomenda.UseVisualStyleBackColor = true;
             this.b_add_encomenda.Click += new System.EventHandler(this.b_add_encomenda_Click);
-            // 
-            // tabela_encomendas
-            // 
-            this.tabela_encomendas.AllowUserToAddRows = false;
-            this.tabela_encomendas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabela_encomendas.Location = new System.Drawing.Point(0, 26);
-            this.tabela_encomendas.Name = "tabela_encomendas";
-            this.tabela_encomendas.ReadOnly = true;
-            this.tabela_encomendas.RowHeadersVisible = false;
-            this.tabela_encomendas.Size = new System.Drawing.Size(567, 313);
-            this.tabela_encomendas.TabIndex = 0;
             // 
             // exit_button
             // 
@@ -1627,6 +1629,17 @@ namespace UberEats
             // 
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(148, 284);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(52, 17);
+            this.radioButton5.TabIndex = 45;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Ativar";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1817,6 +1830,7 @@ namespace UberEats
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox26;
         private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.RadioButton radioButton5;
     }
 }
 

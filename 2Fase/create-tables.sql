@@ -45,8 +45,6 @@ create table ServEntr.Avaliacao(
 	tempo_espera		int,
 	primary key(id));
 
-
-drop table ServEntr.Pagamento;
 create table ServEntr.Pagamento(
 	preco			decimal(6,2),
 	morada_fat		varchar(255) not null unique,
@@ -102,5 +100,9 @@ select * from ServEntr.ListMotoristas();
 select * from ServEntr.ListMarcas();
 select * from ServEntr.ListClientes();
 select * from ServEntr.ListEstabelecimentos();
+select * from ServEntr.ListProdutos('McDonalds');
 select nome from ServEntr.Estabelecimento;
 select * from ServEntr.Pagamento;
+select * from ServEntr.Produto;
+select * from ServEntr.EncomendaProduto;
+select * from ServEntr.List1Encomenda('E-1u3');

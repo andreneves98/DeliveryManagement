@@ -51,8 +51,8 @@ namespace UberEats
             this.label5.Text = "Terminadas: " + num_encomendas_terminadas();
             this.label6.Text = "Canceladas: " + num_encomendas_canceladas();
 
-            DataGridViewRow row = tabela_encomendas.Rows[0];
-            row.Cells["status"].Value = "ativa";
+            //DataGridViewRow row = tabela_encomendas.Rows[0];
+            //row.Cells["status"].Value = "ativa";
         }
 
         // Auxiliar function to manage panels's visibility
@@ -81,14 +81,6 @@ namespace UberEats
             this.tabela_encomendas.DataSource = table_encomendas;
             DataGridViewRow row = tabela_encomendas.Rows[0];
             row.Cells["preco_total"].Value = 12;
-
-            //string status = "ativa";
-            //bool isChecked = radioButton3.Checked;
-            //if (isChecked)
-            //    status = radioButton3.Text;
-            //else
-            //    status = radioButton4.Text;
-            //row.Cells["status"].Value = status;
         }
 
         // Function to load table Motorista
@@ -180,7 +172,7 @@ namespace UberEats
             
             while (reader.Read())
             {
-                checkedListBox1.Items.Add(reader["nome"].ToString() + " " + reader["preco"].ToString());
+                checkedListBox1.Items.Add(reader["nome"].ToString() + ": " + reader["preco"].ToString());
             }
             reader.Close();
         }
@@ -234,12 +226,10 @@ namespace UberEats
 
             while (reader.Read())
             {
-                textBox25.Text = reader["nome"].ToString();
-                checkedListBox2.Items.Add("Hamburguer Carne");
-                checkedListBox2.Items.Add("Hamburguer Ramona");
-                textBox2.Text = "";
-                textBox26.Text = "PayPal";
-
+                textBox25.Text = reader["cliente"].ToString();
+                checkedListBox2.Items.Add(reader["produtos"]);
+                textBox2.Text = reader["obs"].ToString();
+                textBox26.Text = reader["metodo"].ToString();
             }
 
             reader.Close();
@@ -248,45 +238,74 @@ namespace UberEats
         // Function to create Encomendas
         private void addEncomenda()
         {
-            //string estabelecimento = comboBox2.GetItemText(comboBox2.SelectedItem);
-            ////Console.WriteLine(estabelecimento);
-            //string cliente = comboBox1.GetItemText(comboBox1.SelectedItem);
+            string estabelecimento = comboBox2.GetItemText(comboBox2.SelectedItem);
+            string cliente = comboBox1.GetItemText(comboBox1.SelectedItem);
+            string produtos = "";
+            string obs = textBox9.Text;
 
-            //// produtos
-            //string produtos = "Cheeseburger-Big Mac";
-            ////foreach(object item in checkedListBox1.CheckedItems)
-            ////{
-            ////    produtos += item.ToString() + "-";
-            ////    Regex.Replace(produtos.Trim(), @"\d", "");
-            ////}
-            //////string a = Regex.Replace("ad1", @"\d", "");
-            ////Console.WriteLine(produtos);
-            //string obs = textBox9.Text;
+            //foreach (object item in checkedListBox1.CheckedItems)
+            //{
+            //    string[] line = item.ToString().Split(':');
+            //    produtos += line;
+            //}
+            string[] line = null;
+
+            for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
+            {
+                line = checkedListBox1.CheckedItems.IndexOf(i).ToString().Split(':');
+                Console.WriteLine(line[0]);
+                //Console.WriteLine(line[i]);
+                produtos += line[0].ToString();
+            }
+
+            for(int i = 0; i < line.Length; i++)
+            {
+                Console.WriteLine(line[i].ToString());
+            }
+
+            
+            Console.WriteLine(produtos);
 
             //// metodo 
             //string metodo = "";
-            //bool isChecked = radioButton1.Checked;
-            //if (isChecked)
+            //if (radioButton1.Checked)
             //    metodo = radioButton1.Text;
-            //else
+            //else (radioButton2.Checked)
             //    metodo = radioButton2.Text;
 
-            string estabelecimento = "Ramona";
-            string cliente = "Maria Alberta";
-            string produtos = "Hamburguer Carne-Hamburguer Ramona";
-            string obs = "";
-            string metodo = "PayPal";
-            
 
-            SqlCommand cmd = new SqlCommand("ServEntr.newEncomenda", cn);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@estabelecimento", estabelecimento);
-            cmd.Parameters.AddWithValue("@cliente", cliente);
-            cmd.Parameters.AddWithValue("@produtos", produtos);
-            cmd.Parameters.AddWithValue("@obs", obs);
-            cmd.Parameters.AddWithValue("@metodo", metodo);
-            cmd.ExecuteNonQuery();
+
+            //SqlCommand cmd = new SqlCommand("ServEntr.newEncomenda", cn);
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.AddWithValue("@estabelecimento", estabelecimento);
+            //cmd.Parameters.AddWithValue("@cliente", cliente);
+            //cmd.Parameters.AddWithValue("@produtos", produtos);
+            //cmd.Parameters.AddWithValue("@obs", obs);
+            //cmd.Parameters.AddWithValue("@metodo", metodo);
+            //cmd.ExecuteNonQuery();
+
+        }
+
+        // Function to edit Encomendas
+        private void editEncomenda()
+        {
+            int selectedrowindex = tabela_encomendas.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = tabela_encomendas.Rows[selectedrowindex];
+            string id = Convert.ToString(selectedRow.Cells["id"].Value);
+
+            string status = "";
+            if (radioButton3.Checked)
+                status = "terminada";
+            else if (radioButton4.Checked)
+                status = "cancelada";
+            else if (radioButton5.Checked)
+                status = "ativa";
             
+            SqlCommand cmd = new SqlCommand("ServEntr.editEncomenda", cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@status", status);
+            cmd.ExecuteNonQuery();
         }
 
         // Function to remove Encomendas
@@ -423,12 +442,14 @@ namespace UberEats
         private void b_cancel_add_encomenda_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_encomendas);
+            clear_fields();
         }
 
         private void b_add_encomenda_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_addencomenda);
             listaEstabelecimentos();
+            clear_fields();
         }
 
         private void b_edit_encomenda_Click(object sender, EventArgs e)
@@ -444,32 +465,38 @@ namespace UberEats
         private void b_cancel_add_encomenda_Click_1(object sender, EventArgs e)
         {
             showpanel(this.painel_encomendas);
+            clear_fields();
         }
 
         private void b_cancel_edit_encomenda_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_encomendas);
+            clear_fields();
         }
 
         private void b_encomendas_lateral_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_encomendas);
+            clear_fields();
         }
 
         private void b_motoristas_lateral_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_motoristas);
             loadTabelaMotoristas();
+            clear_fields();
         }
 
         private void b_add_motorista_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_addmotorista);
+            clear_fields();
         }
 
         private void b_cancel_add_motorista_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_motoristas);
+            clear_fields();
         }
 
         private void b_edit_motorista_Click(object sender, EventArgs e)
@@ -480,22 +507,26 @@ namespace UberEats
 
             showpanel(this.painel_edit_motorista);
             showMotorista(nome);
+            clear_fields();
         }
 
         private void b_cancel_edit_motorista_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_motoristas);
+            clear_fields();
         }
 
         private void b_lateral_clientes_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_clientes);
             loadTabelaClientes();
+            clear_fields();
         }
 
         private void b_add_cliente_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_add_cliente);
+            clear_fields();
         }
 
         private void b_edit_cliente_Click(object sender, EventArgs e)
@@ -511,11 +542,13 @@ namespace UberEats
         private void b_cancel_add_cliente_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_clientes);
+            clear_fields();
         }
 
         private void b_cancel_edit_cliente_Click(object sender, EventArgs e)
         {
             showpanel(this.painel_clientes);
+            clear_fields();
         }
 
         public SqlConnection getSGBDConnection()
@@ -587,6 +620,7 @@ namespace UberEats
             addEncomenda();
             showpanel(this.painel_encomendas);
             loadTabelaEncomendas();
+            clear_fields();
         }
 
         private void b_ok_add_motorista_Click(object sender, EventArgs e)
@@ -594,6 +628,7 @@ namespace UberEats
             addMotorista();
             showpanel(this.painel_motoristas);
             loadTabelaMotoristas();
+            clear_fields();
         }
 
         private void b_ok_edit_motorista_Click(object sender, EventArgs e)
@@ -601,6 +636,7 @@ namespace UberEats
             editMotorista();
             showpanel(this.painel_motoristas);
             loadTabelaMotoristas();
+            clear_fields();
         }
 
         private void b_elim_motorista_Click(object sender, EventArgs e)
@@ -608,6 +644,7 @@ namespace UberEats
             deleteMotorista();
             showpanel(this.painel_motoristas);
             loadTabelaMotoristas();
+            clear_fields();
         }
 
         private void b_ok_add_cliente_Click(object sender, EventArgs e)
@@ -615,6 +652,7 @@ namespace UberEats
             addCliente();
             showpanel(this.painel_clientes);
             loadTabelaClientes();
+            clear_fields();
         }
 
         private void b_ok_edit_cliente_Click(object sender, EventArgs e)
@@ -622,6 +660,7 @@ namespace UberEats
             editCliente();
             showpanel(this.painel_clientes);
             loadTabelaClientes();
+            clear_fields();
         }
 
         private void b_elim_cliente_Click(object sender, EventArgs e)
@@ -629,27 +668,36 @@ namespace UberEats
             deleteCliente();
             showpanel(this.painel_clientes);
             loadTabelaClientes();
+            clear_fields();
         }
-
+        
         private void b_ok_editencomenda_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = tabela_encomendas.Rows[0];
-
-            string status = "";
-            bool isChecked = radioButton3.Checked;
-            if (isChecked)
-                status = "terminada";
-            else
-                status = "cancelada";
-            row.Cells["status"].Value = status;
+            editEncomenda();
             showpanel(this.painel_encomendas);
-            //loadTabelaEncomendas();
+            loadTabelaEncomendas();
+            clear_fields();
         }
 
         private void elim_encomenda_Click(object sender, EventArgs e)
         {
+            clear_fields();
             deleteEncomenda();
             loadTabelaEncomendas();
+        }
+
+        private void clear_fields()
+        {
+            textBox1.Text = ""; textBox2.Text = ""; textBox3.Text = ""; textBox4.Text = "";
+            textBox5.Text = ""; textBox6.Text = ""; textBox7.Text = ""; textBox8.Text = "";
+            textBox9.Text = ""; textBox11.Text = ""; textBox12.Text = ""; textBox13.Text = "";
+            textBox14.Text = ""; textBox15.Text = ""; textBox16.Text = ""; textBox17.Text = "";
+            textBox18.Text = ""; textBox19.Text = ""; textBox20.Text = ""; textBox21.Text = "";
+            textBox22.Text = ""; textBox24.Text = ""; textBox25.Text = ""; textBox26.Text = "";
+            textBox27.Text = ""; textBox28.Text = ""; textBox29.Text = ""; textBox30.Text = "";
+
+            checkedListBox1.Items.Clear();
+            checkedListBox2.Items.Clear();
         }
     }
 }

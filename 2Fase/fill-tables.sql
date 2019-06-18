@@ -4,7 +4,7 @@ insert into ServEntr.Cliente(nr_reg, nome, nif, email, nr_tel, morada) values (2
 insert into ServEntr.Cliente(nr_reg, nome, nif, email, nr_tel, morada) values (5, 'Ana Rita', 858412350, 'anarita@gmail.com', 936420805, 'Rua Agostinho da Silva Rocha 96, 4479-003 Maia');
 
 -- ENCHER A TABELA MOTORISTAS --
-insert into ServEntr.Motorista(nr_reg, nome, nif, email, nr_tel, matricula, marcaveiculo, morada) values (3, 'Tânia Coelho', 254846227, 'taniac@gmail.com', 934654225, '10-47-NB', 'Mercedes-Benz', 'Rua de António Galvão 127, 4150-008 Porto');
+insert into ServEntr.Motorista(nr_reg, nome, nif, email, nr_tel, matricula, marcaveiculo, morada) values (5, 'Dany Costa', 845461227, 'danycosta@gmail.com', 934656115, '50-47-KL', 'Mercedes-Benz', 'Rua do Tony 127, 4150-069 Porto');
 insert into ServEntr.Motorista(nr_reg, nome, nif, email, nr_tel, matricula, marcaveiculo, morada) values (4, 'Rita Martins', 354268559, 'ritamartins@outlook.com', 961542278, 'UJ-87-46', 'Renault', 'Avenida Descobrimentos 498, 4404-503 Vila Nova de Gaia');
 insert into ServEntr.Motorista(nr_reg, nome, nif, email, nr_tel, matricula, marcaveiculo, morada) values (6, 'Osvaldo Carolino', 254811089, 'osvcarol@sapo.pt', 913452189, '20-CN-54', 'BMW', 'Rua António Moreira da Silva 17, 4479-002 Maia');
 
@@ -31,3 +31,11 @@ insert into ServEntr.Pagamento(preco, morada_fat, metodo, referencia) values (13
 -- ENCHER A TABELA ENCOMENDA --
 insert into ServEntr.Encomenda (id, morada, obs, preco_total, ref_pagamento, nr_reg_cliente, nr_reg_motorista, id_avaliacao, status) values ('E-1u3', 'Rua do Carmo 35, 3804-503 Aveiro', null, 6.50, 123456, 2, 6, 1, 'ativa');
 insert into ServEntr.Encomenda (id, morada, obs, preco_total, ref_pagamento, nr_reg_cliente, nr_reg_motorista, id_avaliacao, status) values ('E-k74', 'Rua Agostinho da Silva Rocha 96, 4479-003 Maia', null, 13.60, 654321, 5, 4, 2, 'terminada');
+
+-- ENCHER A TABELA CONSTITUIDA POR ENCOMENDAS E PRODUTOS --
+insert into ServEntr.EncomendaProduto(id_encomenda, id_produto) values ('E-1u3', 'P-4bh');
+insert into ServEntr.EncomendaProduto(id_encomenda, id_produto) values ('E-1u3', 'P-ad6');
+insert into ServEntr.EncomendaProduto(id_encomenda, id_produto) values ('E-k74', 'P-etf');
+insert into ServEntr.EncomendaProduto(id_encomenda, id_produto) values ('E-k74', 'P-t65');
+insert into ServEntr.EncomendaProduto(id_encomenda, id_produto) values ('E-k74', 'P-10p');
+insert into ServEntr.EncomendaProduto(id_encomenda, id_produto) values ('E-k74', 'P-520');
